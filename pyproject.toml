@@ -1,0 +1,29 @@
+[project]
+name = "olg-technical-assessment"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "pytest-playwright>=0.8.0",
+    "ruff>=0.14.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+base_url = "https://www.olg.ca"
+addopts = [
+    "-v",
+    "--strict-markers",
+    "--screenshot=only-on-failure",
+    "--video=retain-on-failure",
+    "--output=artifacts",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
