@@ -21,6 +21,7 @@ class OlgHomePage(BasePage):
         self.header = page.get_by_role("banner")
         self.login_button = page.get_by_role("button", name="Login", exact=True)
         self._privacy_accept = page.get_by_role("button", name="OKAY", exact=True)
+        self._navigation_toggle = page.get_by_role("button", name="Toggle navigation")
 
     def open(self) -> Self:
         super().open()
@@ -33,6 +34,10 @@ class OlgHomePage(BasePage):
         self.page.wait_for_function(
             "getComputedStyle(document.body).opacity === '1'", timeout=REVEAL_TIMEOUT_MS
         )
+
+    def open_navigation_menu(self) -> None:
+        """At mobile widths the login button sits behind the hamburger menu."""
+        self._navigation_toggle.click()
 
     def dismiss_privacy_notice(self) -> None:
         """The privacy notice is not always served, so its absence is not a failure."""
