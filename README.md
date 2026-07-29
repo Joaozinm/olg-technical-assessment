@@ -67,12 +67,6 @@ until its timeout. One behaviour per test.
 ## Assumptions and limitations
 
 - Live production sites, so the suite depends on availability, content changes and bot protection.
-- Playwright's `to_be_visible` ignores opacity. OLG ships `body { opacity: 0 }` until it reveals
-  the page at about 3.5s, so the assertions passed against a blank page until the page object
-  started waiting for the reveal. Navigation stops at `domcontentloaded` because `load` waits on
-  third party subresources, measuring 6.5s to 29s.
-- `to_be_visible` also ignores the viewport, so Part 2 adds `to_be_in_viewport`. Used only there,
-  where measurement showed the gap.
 - Maps results follow the client IP, so the test asserts that a result exists, never a business
   name. `hl=en` pins the UI language the accessible-name locators depend on.
 - Mobile covers Part 1 only. Maps mobile web has no search input: the affordance is a
