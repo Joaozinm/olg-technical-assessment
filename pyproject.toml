@@ -19,6 +19,7 @@ addopts = [
     "--strict-markers",
     "--screenshot=only-on-failure",
     "--video=retain-on-failure",
+    "--tracing=retain-on-failure",
     "--output=artifacts",
 ]
 

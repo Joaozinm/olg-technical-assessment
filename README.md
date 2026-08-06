@@ -24,8 +24,13 @@ uv run pytest
 | `uv run pytest --browser firefox --browser webkit` | The suite on the other two engines |
 
 The mobile tests carry their own emulated device, so they need no flag. A global `--device` would
-push the desktop tests onto a phone, where they are expected to fail. Failures leave a screenshot
-and a video in `artifacts/`.
+push the desktop tests onto a phone, where they are expected to fail. Failures leave a screenshot,
+a video and a trace in `artifacts/`. The trace carries a DOM snapshot per action, plus network and
+console, and opens with:
+
+```bash
+uv run playwright show-trace artifacts/<test-name>/trace.zip
+```
 
 ## Tools and why
 
